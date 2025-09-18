@@ -40,15 +40,15 @@ element* createAlphabet()
 	
 	while(i < 26)
 	{
-		element* temp = e1;
+		element* temp = e1; 
 		e1->next = new element;
 		e1->letter = 'A' + i;
 		cout << e1->letter << endl;
 		e1 = e1->next;
 		e1->prev = temp;
-		i++;
+		i++;	
 	}
-	delete e1;
+	
 	
 	return temp1;
 }
@@ -95,10 +95,12 @@ bool getKey(element* alphabetHead)
 	
 	while(i < key.length())
 	{
+		int j = 0;
 		verified = false;
 		alphabetHead = temp;
-		while(alphabetHead)
+		while(j < 26)
 		{
+			cout << i << endl;
 			cout << endl << "Comparing " << key[i] << "to" << alphabetHead->letter << endl;
 			if(key[i] == alphabetHead->letter)
 			{
@@ -106,7 +108,8 @@ bool getKey(element* alphabetHead)
 				verified = true;
 			}
 			alphabetHead = alphabetHead->next;
-		}
+	                j++;
+          	}
 		if(!verified)
 		{
 			return 0;
