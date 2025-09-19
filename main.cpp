@@ -20,7 +20,9 @@ element* createAlphabet();
 
 element* createMatrix();
 
-bool getKey(element* alphabetHead);
+bool checkKey(element* alphabetHead, string key);
+
+string menuKey(element* alphabetHead);
 
 int main()
 {
@@ -77,7 +79,23 @@ element* createMatrix()
 	return temp1;
 }
 
-bool getKey(element* alphabetHead)
+void menuKey(element* alphabetHead)
+
+       string key = "";
+        
+       cout << "Please enter key: ";
+       cin >> key;
+
+	while(!checkKey(alphabetHead))
+	{
+		cout << endl << Invalid Key! Can not include spaces, non capital alphabet, or be longer than 25 characters!" << endl;
+	}
+	
+
+
+}
+
+bool checkKey(element* alphabetHead, string key)
 {
 	bool verified = false;
 	
@@ -100,11 +118,8 @@ bool getKey(element* alphabetHead)
 		alphabetHead = temp;
 		while(j < 26)
 		{
-			cout << i << endl;
-			cout << endl << "Comparing " << key[i] << "to" << alphabetHead->letter << endl;
 			if(key[i] == alphabetHead->letter)
 			{
-				cout << endl << "The letters are the same!" << endl;
 				verified = true;
 			}
 			alphabetHead = alphabetHead->next;
